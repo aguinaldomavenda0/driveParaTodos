@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <!-- Favicons -->
+        <link href="img/3.jpg" rel="icon">
+        <link href="img/3.jpg" rel="apple-touch-icon">
+
+        <link rel="stylesheet" href="css/materialize.css">
+        <link rel="stylesheet" href="css/maven.css">
+        <!--link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"-->
+        <title>CC - Nocturnos</title>
+    </head>
+    
+    <body>
+        <span id="impossivel" hidden=""></span>
+        <span id="pastasSelecionada" hidden="">0</span>
+        <img src="img/3.jpg" class="fullscreen" style="z-index:-1;position:fixed;">
+        <div class="row container" id="app">
+            <div class="col l12 m12 s12 center " >
+        <div class="card red center row" style="height:60px;padding-top: 5px;" id="JanelaDeFicheiros">
+            <a href="https://fb.me/mav3nda" class="col s2" title="Aguinaldo Albino Mavenda"><img src="img/logo.jpg" class="circle left" style="width:45px;margin-left:4px; margin-top:2px;"></a>
+
+            <a href="index.html"><i class="material-icons white-text left col s1" style="font-size:3rem">folder_shared</i></a>
+            <h6 class="white-text col s7 " style="padding:5px;">Material das defesas<br/> Topicos Avançados </h6>
+            <a href="#modaltest" class="modal-trigger"><i class="material-icons white-text right col s1" style="font-size:3rem">info</i></a>
+            <div id="carregaNinguemPodeNegare"></div>
+            
+            </div>
+        </div>
+        <div class="white col s12 m12 l12 row " style="border-radius:5px;padding-top:20px;padding-bottom:20px;; height: 500px; overflow-y: scroll;">
+            <div class="col s12 m12 l12 teal lighten-5 left " id="navegacao" style="position: relative; top: -18px; border-radius:8px;width: 100%; height: 20px;">
+                <a href="#!" onclick="reiniciar()"><span class="navega white-tex t">maven/</span></a>
+            </div>
+            
+            <div class="conteudo">
+            </div>
+        </div>
+        </div>
+          <div class="fixed-action-btn">
+  <a class="btn-floating btn-large green pulse" title="Deixe uma mensagem de melhorias.">
+    <i class="large material-icons">add</i>
+  </a>
+      <ul>
+    <li><a class="btn-floating red modal-trigger" title="Criar nova Pasta" href="#testePasta" onclick="permicao()"><i class="material-icons">create_new_folder</i></a></li>
+    <li><a href="#teste" class="btn-floating blue darken-1 modal-trigger"><i class="material-icons">insert_drive_file</i></a></li>
+  </ul>
+        </div>
+
+     
+         <form action="a.php" method="POST"  id="formulario" enctype="multipart/form-data">
+            <div class="modal modal-fixed-footer" id="teste">
+              
+              <div class="modal-content">
+
+                <h4 class="light"> Adicionar Ficheiro</h4>
+
+                <p>
+                    <div class="progress" id="ordemprogresso" style="opacity: 0">
+                        <div class="determinate" id="final" style="width: 0%"></div>
+                    </div>
+  <div class="row">
+      <div class="col s12">
+        <div class="row">
+            <div class="col s12 m6 l6">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span><i class="material-icons">insert_drive_file</i></span>
+                        <input id="ficheiroSelecionado" type="file" name="ficheiroSelecionado" onchange="filtraFicheiro('ficheiroSelecionado')">
+                    </div>
+                    
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+            </div>
+            </div>
+
+      <div class="row">
+        <div class="input-field col s12 m12 l12">
+                <i class="material-icons prefix">content_paste</i>
+          <input id="nome" placeholder="Nome do Ficheiro" type="text" name="nome" class="validate">
+          <label for="nome">Nome</label>
+        </div>
+            <div class="input-field col s12 m12 l12">
+                <span><i class="material-icons prefix left">attach_file</i><div style="margin-left: 40px;">Tipo:
+                <span id="tipo" class="blue-text"></span></div></span>
+            </div>
+      </div>
+
+      </div>
+    </div>
+        
+                </p>
+              </div>
+              
+              <div class="modal-footer left">
+                  <button class="btn green" name="btn_action" type="submit">Adicionar</button>
+                  <a href="#" class="btn red modal-close modal-action">Sair</a>
+              </div>
+
+            </div>
+    </form>
+   
+         <form action="a.php" method="POST"  id="formularioPasta" enctype="multipart/form-data">
+            <div class="modal modal-fixed-footer" id="testePasta">
+              
+              <div class="modal-content">
+
+                <h4 class="light"> Adicionar Pasta</h4>
+
+                <p>
+                    <div class="progress" id="ordemprogresso" style="opacity: 0">
+                        <div class="determinate" id="final" style="width: 0%"></div>
+                    </div>
+  <div class="row">
+      <div class="col s12">
+
+      <div class="row">
+        <div class="input-field col s12 m12 l12">
+                <i class="material-icons prefix">folder</i>
+          <input id="nome" placeholder="Nome da Pasta" type="text" name="nomePasta" class="validate">
+          <label for="nome">Nome Pasta</label>
+        </div>
+            
+      </div>
+
+      </div>
+    </div>
+        
+                </p>
+              </div>
+              
+              <div class="modal-footer left">
+                  <button class="btn green" name="btn_action" type="submit">Adicionar</button>
+                  <a href="#" id="fechar" class="btn red modal-close modal-action">Sair</a>
+              </div>
+
+            </div>
+    </form>
+                <div class="modal modal-fixed-footer" id="modaltest">
+              
+              <div class="modal-content">
+
+                <h4 class="light"> Informação App</h4>
+                <hr/>
+                <p>
+                    <div class="progress" id="ordemprogresso" style="opacity: 0">
+                        <div class="determinate" id="final" style="width: 0%"></div>
+                    </div>
+  <div class="row">
+      <div class="col s12">
+        <p><i class="material-icons left">people</i>Aplicação desenvolvida por e para alunos da Faculdade de Ciências Naturais - UAN</p>
+        <p><i class="material-icons left">assignment_turned_in</i>A aplicação suporta apenas dois tipos de documentos<a href="#">PDF e Apresentações POWER POINT</a></p>
+        <p><i class="material-icons left">share</i>O <a href="#!">objectivo principal</a> é partilhar trabalhos das defesas feitas pelos alunos do Curso de Ciências da Computação, porém, todo o conteudo de apoio a computação, tecnologias são bem vindos ao curso de <a href="#!">Ciência da Computação</a></p>
+        <p><i class="material-icons left">cloud_upload</i>Faça upload do seu trabalho de Topicos Avançados na pasta <a href="#!">SLIDES DEFESA TPA </a> </p>
+        <p><i class="material-icons left">add</i>Se deseja contribuir para o evolução desta Aplicação, click <a href="https://github.com/aguinaldomavenda0/driveParaTodos" target="new">Aqui</a> e encontras o repositorio da a aplicação no gitHub, faça o teu commit.</p>
+        <p><i class="material-icons left">settings</i>Por ser informação muito cuidadosa, não é permitido, criar <a href="#!">pastas e ficheiros</a> dentro da pasta 1º, 2º, 3º e 4º ANO, o upload para estas pastas é apenas direicto exclusivo do <a target="Aguinaldo Mavenda" href="https://fb.me/mav3nda">administrador</a>. 
+      </div>
+      <p> Desenvolvido por: <a target="new" href="https://fb.me/mav3nda"> <i class="material-icons left"> person</i> Aguinaldo Mavenda</a></p>
+    </div>
+        
+                </p>
+              </div>
+              
+              <div class="modal-footer left">
+                  <a href="#" class="btn red modal-close modal-action">Fechar</a>
+              </div>
+
+            </div>
+            <a href="#modaltested" class="modal-trigger" hidden="" id="pequena"></a>
+            <div class="modal modal-fixed-footer" id="modaltested">
+              
+              <div class="modal-content">
+
+                <h4 class="light"> Seja Bem vindo.</h4>
+                <hr/>
+                <p> <h6>Objectivo</h6>
+                    <hr/>
+                    <div class="progress" id="ordemprogresso" style="opacity: 0">
+                        <div class="determinate" id="final" style="width: 0%"></div>
+                    </div>
+  <div class="row">
+      <div class="col s12">
+        <p><i class="material-icons left">share</i> Partilhar trabalhos de defesas feitas pelos alunos do Curso de Ciências da Computação e todos os materiais de apoio ao curso de <a href="#!">Ciência da Computação</a></p>
+        <p><i class="material-icons left">check</i>Facilitar na partilha de documentos</p>
+        <hr />
+        <h6>Utilização</h6>
+        <hr/>
+        <p><i class="material-icons left">file_upload</i>Faça upload do seu trabalho de Topicos Avançados na pasta <a href="#!">SLIDES DEFESA TPA </a> </p>
+        <p><i class="material-icons left">cloud_upload</i>Se tiver um material de apoio do curso, <a>Apresentação POWER POINT ou ou PDF</a> faça o upload na pasta <a href="#!">Material de Apoio </a> </p>
+        <p><i class="material-icons left">book</i>Se tiver um material que desejas sugerir aos colegas, deixe o documento no na pasta <a href="#!">Minha sugestão </a> </p>
+        <hr/>
+        Outros
+        <hr/>
+        <p><i class="material-icons left">assignment_turned_in</i>A aplicação suporta apenas dois tipos de documentos<a href="#">PDF e Apresentações POWER POINT</a></p>
+        <p><i class="material-icons left">person_add</i>Se deseja contribuir para o evolução desta Aplicação, click <a target="newblank" href="https://github.com/aguinaldomavenda0/driveParaTodos">Aqui</a> e encontras o repositorio da a aplicação no gitHub, faça o teu commit.</p>
+        <p><i class="material-icons left">settings</i>Por ser informação muito cuidadosa, não é permitido, criar <a href="#!">pastas e ficheiros</a> dentro da pasta 1º, 2º, 3º e 4º ANO, o upload para estas pastas é apenas direicto exclusivo do <a target="Aguinaldo Mavenda" href="https://fb.me/mav3nda">administrador</a>. 
+      </div>
+      <p> Desenvolvido por: <a target="new" href="https://fb.me/mav3nda"> <i class="material-icons left"> person</i> Aguinaldo Mavenda</a></p>
+    </div>
+        
+                </p>
+              </div>
+              
+              <div class="modal-footer left">
+                  <a href="#" class="btn red modal-close modal-action">Fechar</a>
+              </div>
+
+            </div>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/maven.js"></script>
+        <script type="text/javascript">
+            window.load = carregarFuncao()
+            function carregarFuncao(){
+                $(".modal").modal()
+                $("select").material_select()
+                pastasPreparadas(0)
+                if (!localStorage.getItem("visao")) {
+                    document.getElementById('pequena').click()
+                    localStorage.setItem("visao","a")
+                }
+            }
+        </script>
+
+    </body> 
+</html>

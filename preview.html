@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <!-- Favicons -->
+        <link href="img/3.jpg" rel="icon">
+        <link href="img/3.jpg" rel="apple-touch-icon">
+
+        <link rel="stylesheet" href="css/materialize.css">
+        <link rel="stylesheet" href="css/maven.css">
+        <!--link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"-->
+        <title>CC - Nocturnos</title>
+    </head>
+    
+    <body>
+        <img src="img/3.jpg" class="fullscreen" style="z-index:-1;position:fixed;">
+        <div class="row container" id="app">
+            <div class="col l12 m12 s12 center " >
+        <div class="card red center row" style="height:60px;padding-top: 5px;" id="JanelaDeFicheiros">
+            <a href="https://fb.me/mav3nda" class="col s2" title="Aguinaldo Albino Mavenda"><img src="img/logo.jpg" class="circle left" style="width:45px;margin-left:4px; margin-top:2px;"></a>
+
+            <a href="index.html"><i class="material-icons white-text left col s1" style="font-size:3rem">folder_shared</i></a>
+            <h6 class="white-text col s7 " style="padding:5px;">Material das defesas<br/> Topicos Avançados </h6>
+            <div id="carregaNinguemPodeNegare"></div>
+            
+            </div>
+        </div>
+        <iframe src="" class="col l12 s12 m12 card" id="previsualiza" style="margin-top: -14px; height: 500px;">
+            
+        </iframe> 
+        </div>
+
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/maven.js"></script>
+        <script type="text/javascript">
+            window.load = carregarFuncao()
+            function carregarFuncao(){
+                var link = window.location.href+"";
+                var atributo = link.split("?")
+                atributo = atributo[1].split('=')
+                atributo = Number(atributo[1]);
+                //console.log(atributo)
+                if (Number.isInteger(atributo)) {
+                    abrirFicheiroLoaded(atributo)
+                }else{
+                    Materialize.toast("<span class='red-text'>Codigo documento invalido! </span>");
+                    setTimeout(window.location="index.html",1500)
+                }
+                //console.log(atributo[1])
+            }
+        </script>
+
+    </body> 
+</html>
